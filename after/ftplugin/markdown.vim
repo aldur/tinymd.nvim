@@ -27,5 +27,9 @@ setlocal formatoptions+=rtln formatoptions-=o formatoptions-=c formatoptions-=q
 " - ^\s*>+\s+ ? matches a > followed or preceded by white space.
 setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\|^\\s*[-*+]\\s\\+\\\|^\\[^\\ze[^\\]]\\+\\]:\\\|^\\s*>\\s\\+
 
-nnoremap <silent><buffer> + <cmd>call tinymd#increase_header_level()<CR>
-nnoremap <silent><buffer> - <cmd>call tinymd#decrease_header_level()<CR>
+if mapcheck('+', 'n') ==# ''
+    nnoremap <silent><buffer> + <cmd>call tinymd#increase_header_level()<CR>
+endif
+if mapcheck('-', 'n') ==# ''
+    nnoremap <silent><buffer> - <cmd>call tinymd#decrease_header_level()<CR>
+endif
